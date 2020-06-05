@@ -80,6 +80,14 @@
     },
     "utapi": {
         "port": 8100,
-        "workers": 5
+        "workers": 5,
+        "redis": {
+            "host": "127.0.0.1",
+            "port": 6379
+        }
+    },
+    "localCache": {
+        "host": "127.0.0.1",
+        "port": 6379
     }
 }
