@@ -1,0 +1,55 @@
+// Copyright 2020 HCL Technologies Ltd.
+
+syntax = "proto3";
+
+package interface;
+
+service ObjectLayer {
+    rpc Create(Bucket) returns (Status) {}
+    
+    /* Put Object - though this is only defined to send a stream of 'Object' messages,
+     * client will first send a Object message whcih contains object name & meta
+     * data and then follow it with a stream of 'object' messages which contain the object
+     * content - that is datablocks
+     */
+    rpc PutObject(stream Object) returns (Status) {}
+    
+    /* returns a stream of 'Object' messages. first message will have the metadata, subsequent
+     * messages will have the content
+     */
+    rpc GetObject(ObjectName) returns (stream Object) {} 
+}
+
+message Bucket {
+    string name = 1; // bucket path without any host info. for e.g. "subbucket.bucket"
+    // ToDo: bucket path aspect needs to be confirmed by experimenting. bucket inside bucket - how it is represented in S3 requests
+    // other meta data to be added here
+}
+
+message Object {
+    oneof MetaDataOrContent{
+        MetaData metadata = 1;
+        Content content = 2;
+    }
+}
+
+message ObjectName {
+    string name = 1;
+}
+
+message MetaData {
+    ObjectName objname = 1; // name of the object / object key
+    int64 len = 2; // size of the object. S3 documentation says single object can be 5TB. single put can be 5GB. So, need a int64
+    // ToDo: Multi-part upload: Do we need a separate field for the length being received in this put call? 
+    // len is not a good variable name. change this to 'size'
+
+    // # other meta data to be added here
+}
+
+message Content {
+    bytes datablock = 1;
+}
+
+message Status {
+    int32 status = 1;
+}

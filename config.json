@@ -3,8 +3,8 @@
     "listenOn": [],
     "replicationGroupId": "RG001",
     "restEndpoints": {
-        "localhost": "us-east-1",
-        "127.0.0.1": "us-east-1",
+        "localhost": "south-india",
+        "127.0.0.1": "south-india",
         "cloudserver-front": "us-east-1",
         "s3.docker.test": "us-east-1",
         "127.0.0.2": "us-east-1",
@@ -55,19 +55,19 @@
     },
     "metadataClient": {
         "host": "localhost",
-        "port": 9990
+        "port": 50051
     },
     "dataClient": {
         "host": "localhost",
-        "port": 9991
+        "port": 50051
     },
     "metadataDaemon": {
         "bindAddress": "localhost",
-        "port": 9990
+        "port": 3333
     },
     "dataDaemon": {
         "bindAddress": "localhost",
-        "port": 9991
+        "port": 3333
     },
     "recordLog": {
         "enabled": false,
@@ -77,5 +77,5 @@
         "viaProxy": false,
         "trustedProxyCIDRs": [],
         "extractClientIPFromHeader": ""
-    }
+    }   
 }

@@ -1,4 +1,9 @@
 {
+   "south-india": {
+        "type": "hcl_backend",
+        "legacyAwsBehavior": true,
+        "details": {}
+    },
     "us-east-1": {
         "type": "file",
         "legacyAwsBehavior": true,

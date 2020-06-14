@@ -115,7 +115,7 @@ const constants = {
     objectLocationConstraintHeader: 'x-amz-meta-scal-location-constraint',
     legacyLocations: ['sproxyd', 'legacy'],
     /* eslint-disable camelcase */
-    externalBackends: { aws_s3: true, azure: true, gcp: true },
+    externalBackends: { aws_s3: true, azure: true, gcp: true,hcl_backend: true },
     // some of the available data backends  (if called directly rather
     // than through the multiple backend gateway) need a key provided
     // as a string as first parameter of the get/delete methods.
