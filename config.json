@@ -47,8 +47,8 @@
     },
     "clusters": 10,
     "log": {
-        "logLevel": "info",
-        "dumpLevel": "error"
+        "logLevel": "trace",
+        "dumpLevel": "trace"
     },
     "healthChecks": {
         "allowFrom": ["127.0.0.1/8", "::1"]
